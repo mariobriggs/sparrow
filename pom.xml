@@ -34,11 +34,11 @@
 		  <artifactId>guava</artifactId>
 		  <version>14.0.1</version>
 		</dependency>    
-    <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.4.1</version>
-    </dependency>
+    <!-- <dependency> -->
+    <!--   <groupId>com.google.protobuf</groupId> -->
+    <!--   <artifactId>protobuf-java</artifactId> -->
+    <!--   <version>2.4.1</version> -->
+    <!-- </dependency> -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
@@ -50,9 +50,9 @@
      <version>1.6.4</version>
    </dependency>
    <dependency>
-  	<groupId>org.apache.thrift</groupId>
+  	 <groupId>org.apache.thrift</groupId>
 	  <artifactId>libthrift</artifactId>
-		<version>0.8.0</version>
+	  <version>0.9.3</version>
 	</dependency>
 	<dependency>
     <groupId>org.mockito</groupId>
@@ -70,21 +70,21 @@
     <artifactId>jopt-simple</artifactId>
     <version>4.3</version>
   </dependency>          
-    <dependency>
-    	<groupId>org.apache.zookeeper</groupId>
-    	<artifactId>zookeeper</artifactId>
-    	<version>3.3.4</version>
-    	<exclusions>
-    	  <exclusion>
-    	    <groupId>com.sun.jmx</groupId>
-    	    <artifactId>jmxri</artifactId>
-    	  </exclusion>
-    	  <exclusion>
-    	    <groupId>com.sun.jdmk</groupId>
-    	    <artifactId>jmxtools</artifactId>
-    	  </exclusion>
-    	</exclusions>
-    </dependency>
+    <!-- <dependency> -->
+    <!-- 	<groupId>org.apache.zookeeper</groupId> -->
+    <!-- 	<artifactId>zookeeper</artifactId> -->
+    <!-- 	<version>3.3.4</version> -->
+    <!-- 	<exclusions> -->
+    <!-- 	  <exclusion> -->
+    <!-- 	    <groupId>com.sun.jmx</groupId> -->
+    <!-- 	    <artifactId>jmxri</artifactId> -->
+    <!-- 	  </exclusion> -->
+    <!-- 	  <exclusion> -->
+    <!-- 	    <groupId>com.sun.jdmk</groupId> -->
+    <!-- 	    <artifactId>jmxtools</artifactId> -->
+    <!-- 	  </exclusion> -->
+    <!-- 	</exclusions> -->
+    <!-- </dependency> -->
     <dependency>
     	<groupId>commons-configuration</groupId>
     	<artifactId>commons-configuration</artifactId>
@@ -104,6 +104,15 @@
         <version>1.5</version>
         <configuration>
           <!-- put your configurations here -->
+          <relocations>
+            <relocation>
+              <pattern>org.apache.thrift</pattern>
+              <shadedPattern>sparrow.org.apache.thrift</shadedPattern>
+              <includes>
+                <include>org.apache.thrift.**</include>
+              </includes>
+            </relocation>
+          </relocations>
         </configuration>
         <executions>
           <execution>

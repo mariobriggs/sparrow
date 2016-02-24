@@ -130,11 +130,11 @@ public class SparrowFrontendClient {
       clients.put(client);
     } catch (InterruptedException e) {
       LOG.fatal(e);
-    } catch (TException e) {
-      LOG.error("Thrift exception when submitting job: " + e.getMessage());
-      return false;
     } catch (IncompleteRequestException e) {
       LOG.error(e);
+      return false;
+    } catch (TException e) {
+      LOG.error("Thrift exception when submitting job: " + e.getMessage());
     }
     return true;
   }
