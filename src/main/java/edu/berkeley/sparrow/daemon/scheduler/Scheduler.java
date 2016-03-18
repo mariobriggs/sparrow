@@ -333,19 +333,19 @@ public class Scheduler {
                                             user, description, constrained));
 
     TaskPlacer taskPlacer;
-    if (constrained) {
-      if (request.isSetProbeRatio()) {
-        taskPlacer = new ConstrainedTaskPlacer(requestId, request.getProbeRatio());
-      } else {
-        taskPlacer = new ConstrainedTaskPlacer(requestId, defaultProbeRatioConstrained);
-      }
-    } else {
+    // if (constrained) {
+//      if (request.isSetProbeRatio()) {
+//        taskPlacer = new ConstrainedTaskPlacer(requestId, request.getProbeRatio());
+//      } else {
+//        taskPlacer = new ConstrainedTaskPlacer(requestId, defaultProbeRatioConstrained);
+//      }
+   // } else {
       if (request.isSetProbeRatio()) {
         taskPlacer = new UnconstrainedTaskPlacer(requestId, request.getProbeRatio());
       } else {
         taskPlacer = new UnconstrainedTaskPlacer(requestId, defaultProbeRatioUnconstrained);
       }
-    }
+   // }
     requestTaskPlacers.put(requestId, taskPlacer);
 
     Map<InetSocketAddress, TEnqueueTaskReservationsRequest> enqueueTaskReservationsRequests;
